@@ -9,7 +9,10 @@ declare function local:output($x ) {
   fn:string-join($x, " *** ")
 };
 
-for $doc in fn:doc()[1 to 5]
+declare variable $mindoc as xs:integer external;
+declare variable $maxdoc as xs:integer external;
+
+for $doc in fn:doc()[$mindoc to $maxdoc]
   let $meta := $doc//*:akomaNtoso/*:judgment/*:meta
   let $id := $meta/*:identification
   return (
