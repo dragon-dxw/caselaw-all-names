@@ -12,7 +12,7 @@ declare function local:output($x ) {
 declare variable $mindoc as xs:integer external;
 declare variable $maxdoc as xs:integer external;
 
-for $doc in fn:doc()[$mindoc to $maxdoc]
+for $doc in fn:collection("http://marklogic.com/collections/dls/latest-version")[$mindoc to $maxdoc]
   let $meta := $doc//*:akomaNtoso/*:judgment/*:meta
   let $id := $meta/*:identification
   return (
